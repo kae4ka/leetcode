@@ -1,3 +1,9 @@
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        return [[i, j] for i in range(len(nums)) for j in range(len(nums)) if i != j and nums[i]+nums[j] == target][0]
+        d = {}
+        for i, j in enumerate(nums):
+            temp = target - j
+            if temp in d:
+                return [d[temp], i]
+            else:
+                d[j] = i
